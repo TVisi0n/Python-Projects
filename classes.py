@@ -36,10 +36,23 @@ class info(Vehicles):
 class Dealership(Vehicles):
     Name = "Ron Tonkin"
     Location = "Hillsboro"
+    parking_loc = "503"
 
+    def enterVehicle(self):
+        enter_make = input("Enter the Make of Vehicle: ")
+        enter_model = input("Enter the Model: ")
+        enter_year = input("Enter the Year: ")
+        enter_loc = input("Enter the Parking Spot: ")
+        if (enter_make == self.Make and enter_model == self.Model and enter_year == self.Year and enter_loc == self.parking_loc):
+            print("This {} {} is in stock!".format(enter_make, enter_model))
+        else:
+            print("This vehicle is not in stock! \nWe are sorry :(")
 
 sales = Vehicles()
 sales.enterVehicle()
 
-dealership = info()
+specs = info()
+specs.enterVehicle()
+
+dealership = Dealership()
 dealership.enterVehicle()
