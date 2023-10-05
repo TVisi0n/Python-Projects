@@ -44,21 +44,16 @@ class ParentWindow(Frame):
         source_files = os.listdir(source)
         
         for i in source_files:
-            path = source
-            float_time = os.path.getmtime(path)
-            mod_time = datetime.datetime.fromtimestamp(float_time).strftime('%Y-%m-%d %H:%M:%S')
-            now = datetime.datetime.now()
-            limit = datetime.timedelta(hours = 24)
-            add = mod_time + datetime.timedelta(hours = 24)
-            
-            shutil.move(source + '/' + i, destination)
-            print(i + ' was successfully transferred.')
+            path = os.path.join(source, i)
+            mod_time = os.path.getmtime(path)
+            date_time_file = datetime.datetime.fromtimestamp(mod_time)
+            twentyFourHoursAgo = datetime.datetime.now() - datetime.timedelta(hours = 24)
+
+            if twentyFourHoursAgo < date_time_file:
+                shutil.move(source + '/' + i, destination)
+                print(i + ' was successfully transferred.')
         
     
-
-
- 
-
     def exit_program(self):
         root.destroy()
         
