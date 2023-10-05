@@ -49,7 +49,7 @@ class ParentWindow(Frame):
             mod_time = datetime.datetime.fromtimestamp(float_time).strftime('%Y-%m-%d %H:%M:%S')
             now = datetime.datetime.now()
             limit = datetime.timedelta(hours = 24)
-            sub = mod_time - datetime.timedelta(hours = 24)
+            add = mod_time + datetime.timedelta(hours = 24)
             
             shutil.move(source + '/' + i, destination)
             print(i + ' was successfully transferred.')
